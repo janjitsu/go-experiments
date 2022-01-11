@@ -1,4 +1,4 @@
-module janjitsu/web-service-gin
+module github.com/janjitsu/go-experiments/gin-rest-api
 
 go 1.17
 
