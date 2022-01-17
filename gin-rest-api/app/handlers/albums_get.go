@@ -5,7 +5,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	"github.com/janjitsu/go-experiments/gin-rest-api/platform/albums"
+	"github.com/janjitsu/go-experiments/gin-rest-api/app/platform/albums"
 )
 
 func GetAlbums(albumRepo albums.Getter) gin.HandlerFunc { //pointer to variable value
