@@ -10,7 +10,9 @@ import (
 
 func main() {
 
-	albumRepo := albums.New()
+	albumRepo := albums.NewDbRepo("postgresql://gouser:123456@localhost:5432/gin-rest-api")
+
+	//albumRepo := albums.New()
 
 	router := gin.Default()
 
