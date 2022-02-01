@@ -31,13 +31,13 @@ func (r *DbRepo) GetAll() []Album {
 
 	rows, err := r.DB.Query("SELECT * FROM albums")
 	if err != nil {
-		log.Fatalf("could not connect to db: %v", err)
+		log.Fatalf("could not get albums: %v", err)
 		return nil
 	}
 	defer rows.Close()
 
 	// An album slice to hold data from returned rows.
-	var albums []Album
+	albums := []Album{}
 
 	// Loop through rows, using Scan to assign column data to struct fields.
 	for rows.Next() {

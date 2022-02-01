@@ -1,0 +1,5 @@
+database:
+  connectionUri: "postgresql://gouser:123456@localhost:5432/gin-rest-api"
+
+server:
+  port: 8080
