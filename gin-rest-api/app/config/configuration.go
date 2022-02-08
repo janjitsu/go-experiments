@@ -25,7 +25,7 @@ func SetupConfig(configPath string) Configuration {
 		log.Fatalf("unable to decode into struct, %v", err)
 	}
 	log.Printf("database uri is %s", configuration.Database.ConnectionUri)
-	log.Printf("server for this application is %d", configuration.Server.Port)
+	log.Printf("server for this application is %s", configuration.Server.Port)
 
 	return configuration
 }
