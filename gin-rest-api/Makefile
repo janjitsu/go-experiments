@@ -1,5 +1,5 @@
 test:
-	go test -v ./... -covermode=atomic
+	gotest -v ./... -covermode=atomic
 
 run dev:
 	go run app/main.go
