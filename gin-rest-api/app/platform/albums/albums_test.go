@@ -3,7 +3,7 @@ package albums
 import "testing"
 
 func TestAdd(t *testing.T) {
-	repo := New()
+	repo := NewInMemoryRepo()
 
 	newAlbum := Album{
 		ID:     "1",
@@ -20,7 +20,7 @@ func TestAdd(t *testing.T) {
 }
 
 func TestRemove(t *testing.T) {
-	repo := New()
+	repo := NewInMemoryRepo()
 
 	newAlbum := Album{
 		ID:     "1",
@@ -38,7 +38,7 @@ func TestRemove(t *testing.T) {
 }
 
 func TestRemoveError(t *testing.T) {
-	repo := New()
+	repo := NewInMemoryRepo()
 
 	newAlbum := Album{
 		ID:     "1",
@@ -57,7 +57,7 @@ func TestRemoveError(t *testing.T) {
 }
 
 func TestGetAll(t *testing.T) {
-	repo := New()
+	repo := NewInMemoryRepo()
 
 	newAlbum := Album{
 		ID:     "1",
@@ -75,7 +75,7 @@ func TestGetAll(t *testing.T) {
 }
 
 func TestGetById(t *testing.T) {
-	repo := New()
+	repo := NewInMemoryRepo()
 
 	newAlbum := Album{
 		ID:     "1",
@@ -94,7 +94,7 @@ func TestGetById(t *testing.T) {
 }
 
 func TestGetByIdError(t *testing.T) {
-	repo := New()
+	repo := NewInMemoryRepo()
 
 	newAlbum := Album{
 		ID:     "1",

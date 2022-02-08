@@ -6,7 +6,7 @@ type Repo struct {
 	Albums []Album
 }
 
-func New() *Repo {
+func NewInMemoryRepo() *Repo {
 	return &Repo{
 		Albums: []Album{},
 	}
