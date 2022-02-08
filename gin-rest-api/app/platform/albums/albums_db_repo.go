@@ -15,7 +15,7 @@ type DbRepo struct {
 
 func NewDbRepo(ConnectionString string) *DbRepo {
 
-	db, err := sql.Open("pgx", "postgresql://gouser:123456@localhost:5432/gin-rest-api")
+	db, err := sql.Open("pgx", ConnectionString)
 	if err != nil {
 		log.Fatalf("could not connect to database: %v", err)
 	}
