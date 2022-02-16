@@ -37,40 +37,60 @@ func (l *LinkedList) add(value string) Node {
 }
 
 func (l *LinkedList) getNode(search string) *Node {
-	cursor := l.head
-	for search != cursor.value {
-		fmt.Printf("searchin if element %s is equal to %s\n", cursor.ToString(), search)
-		if cursor.next == nil {
+	current := l.head
+	for search != current.value {
+		fmt.Printf("searchin if element %s is equal to %s\n", current.ToString(), search)
+		if current.next == nil {
 			fmt.Println("[error] element not found in linked list")
 			os.Exit(1)
 		}
-		cursor = cursor.next
+		current = current.next
 	}
-	fmt.Printf("found element with value %s : %s\n", search, cursor.ToString())
-	return cursor
+	fmt.Printf("found element with value %s : %s\n", search, current.ToString())
+	return current
 }
 
 func (l *LinkedList) remove(search string) {
 	current := l.getNode(search)
+	l.removeNode(current)
+}
+
+func (l *LinkedList) removeNode(node *Node) {
 	temp := l.head
-	if current == nil {
-		fmt.Printf("Error, no element found with value %s", search)
+	if node == nil {
+		fmt.Printf("Error, node is empty")
 		return
 	}
-	if l.head == current {
+	if l.head == node {
 		l.head = temp.next
 		return
 	}
-	for temp.next != current {
+	for temp.next != node {
 		temp = temp.next
 	}
-	if l.tail == current {
+	if l.tail == node {
 		l.tail = temp
 		l.tail.next = nil
 		return
 	}
-	if temp.next == current {
-		temp.next = current.next
+	if temp.next == node {
+		temp.next = node.next
+	}
+}
+
+func (l *LinkedList) removeDuplicates() {
+	current := l.head
+	for current != nil {
+		temp := current.next
+		for temp != nil {
+			if temp.value == current.value {
+				fmt.Printf("found duplicates for %s and %s \n", current.ToString(), temp.ToString())
+				l.removeNode(temp)
+				break
+			}
+			temp = temp.next
+		}
+		current = current.next
 	}
 }
 
@@ -101,18 +121,31 @@ func main() {
 	myList.add("item2")
 	myList.add("item3")
 	myList.add("item4")
+	myList.add("item3")
 	myList.add("item5")
+	myList.add("item5")
+	myList.add("item4")
+	myList.print(debug)
+	myList.removeDuplicates()
 	myList.print(debug)
 
-	fmt.Println("------ remove item 4 ------")
-	myList.remove("item4")
-	myList.print(debug)
-	//como fazer uma lista encadeada em golang?
-	fmt.Println("------ remove item 1 ------")
-	myList.remove("item1")
-	myList.print(debug)
+	/*
+		fmt.Println("------ remove item 4 ------")
+		myList.remove("item4")
+		myList.print(debug)
+		//como fazer uma lista encadeada em golang?
+		fmt.Println("------ remove item 1 ------")
+		myList.remove("item1")
+		myList.print(debug)
 
-	fmt.Println("------ remove item 5 ------")
-	myList.remove("item5")
-	myList.print(debug)
+		fmt.Println("------ remove item 5 ------")
+		myList.remove("item5")
+		myList.print(debug)
+		fmt.Println("------ remove item 3 ------")
+		myList.remove("item3")
+		myList.print(debug)
+		fmt.Println("------ remove item 2 ------")
+		myList.remove("item2")
+		myList.print(debug)
+	*/
 }
